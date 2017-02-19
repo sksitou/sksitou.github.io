@@ -60,6 +60,63 @@
                 
                 
                 <header class="article-header">
+                    <h1 itemprop="name"><a class="article-title" href="/post/Machine-learning-notes-:-least-square-in-linear-regression/">Machine learning notes : Least square error in linear regression</a></h1>
+                </header>
+                
+                <div class="article-meta">
+                    <a href="/post/Machine-learning-notes-:-least-square-in-linear-regression/" class="article-date">
+                        <time datetime='2017-02-19T22:00:00.000&#43;08:00' itemprop="datePublished">2017-02-19</time>
+                    </a>
+                    
+                    
+                    <div class="post-categories">
+                        <div class="article-category">
+                            
+                            
+                            <a class="article-category-link" href="http://sksitou.me//categories/notes">notes</a>
+                            
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+                <div class="article-entry" itemprop="articleBody">
+                    Least sqaure error is used as a cost function in linear regression. However, why should one choose sqaure error, instead of absolute error, or other choices? There&rsquo;s a simple proof that can show that least sqaure error is a reasonable and natural choice.
+Assume the target variable and inputs are related as below: \(y^i=\sigma^Tx^i+\epsilon^i\) \(\sum_{i=1}^m\)
+,where \(\epsilon\sim\mathcal{N}(\mu,\,\sigma^{2})\)
+i.e. \(p(\epsilon^i)=\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(\epsilon^i)^2}{2\sigma^2})\)
+implies that \(p(y^i|x^i_j\theta)=\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(y^i-\theta^Tx)^2}{2\sigma^2})\)
+We would like to minimize the error by maximising the log likelihood.
+                    <p class="article-more-link">
+                        <a href="/post/Machine-learning-notes-:-least-square-in-linear-regression/">Read More</a>
+                    </p>
+                </div>
+
+                
+                <footer class="article-footer">
+                    <ul class="article-tag-list">
+                        
+                        <li class="article-tag-list-item">
+                            <a class="article-tag-list-link" href="http://sksitou.me//tags/machine-learning">machine learning
+                            </a>
+                        </li>
+                        
+                        <li class="article-tag-list-item">
+                            <a class="article-tag-list-link" href="http://sksitou.me//tags/notes">notes
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </footer>
+                
+            </div>
+        </article>
+        
+        <article class="article article-type-post" itemscope itemprop="blogPost">
+            <div class="article-inner">
+                
+                
+                <header class="article-header">
                     <h1 itemprop="name"><a class="article-title" href="/post/first-post/">first post</a></h1>
                 </header>
                 

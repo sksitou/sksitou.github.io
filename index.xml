@@ -6,8 +6,54 @@
     <description>Recent content on sksitouML</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 19 Feb 2017 20:58:24 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 19 Feb 2017 22:00:00 +0800</lastBuildDate>
     <atom:link href="http://sksitou.me/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Machine learning notes : Least square error in linear regression</title>
+      <link>http://sksitou.me/post/Machine-learning-notes-:-least-square-in-linear-regression/</link>
+      <pubDate>Sun, 19 Feb 2017 22:00:00 +0800</pubDate>
+      
+      <guid>http://sksitou.me/post/Machine-learning-notes-:-least-square-in-linear-regression/</guid>
+      <description>&lt;p&gt;Least sqaure error is used as a cost function in linear regression. However, why should one choose sqaure error, instead of absolute error, or other choices?
+There&amp;rsquo;s a simple proof that can show that least sqaure error is a reasonable and natural choice.&lt;/p&gt;
+
+&lt;p&gt;Assume the target variable and inputs are related as below:
+&lt;div&gt;\(y^i=\sigma^Tx^i+\epsilon^i\)&lt;/div&gt;
+&lt;div&gt;\(\sum_{i=1}^m\)&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;,where \(\epsilon\sim\mathcal{N}(\mu,\,\sigma^{2})\)&lt;/p&gt;
+
+&lt;p&gt;i.e.
+&lt;div&gt;\(p(\epsilon^i)=\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(\epsilon^i)^2}{2\sigma^2})\)&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;implies that
+&lt;div&gt;\(p(y^i|x^i_j\theta)=\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(y^i-\theta^Tx)^2}{2\sigma^2})\)&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;We would like to minimize the error by maximising the log likelihood.
+The likelihood function is
+&lt;div&gt;\(L(\theta)=L(\theta:X,\vec{y})=p(y^i|x^i_j\theta)\)&lt;/div&gt;
+&lt;div&gt;\(L(\theta)=\prod(y^i|x^i_j\theta)=\prod(\frac{1}{\sqrt{2\pi}}exp(-\frac{(\epsilon^i)^2}{2\sigma^2}))\)&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;Minimizing the log likelihood function
+&lt;div&gt;\(l(\theta)\)&lt;/div&gt;
+&lt;div&gt;\(=logL(\theta)\)&lt;/div&gt;
+&lt;div&gt;\(=log(\prod(\frac{1}{\sqrt{2\pi}}exp(-\frac{(\epsilon^i)^2}{2\sigma^2})))\)&lt;/div&gt;
+&lt;div&gt;\(=\prod_{i=1}^{m}(log(\frac{1}{\sqrt{2\pi}}exp(-\frac{(y^i-\theta^Tx)^2}{2\sigma^2})))\)&lt;/div&gt;
+&lt;div&gt;\(=mlog(\frac{1}{\sqrt{2\pi}\sigma})-\frac{1}{\sigma^2}\frac{1}{2}(\sum(y^i-\theta^Tx^i)^2)\)&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;which is equivalent to minimizing
+&lt;div&gt;\(\frac{1}{2}(\sum(y^i-\theta^Tx^i)^2)\)&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;, which is also known as the least sqaure function, and note that the \(\sigma^2\) is irrelavent in this case.&lt;/p&gt;
+
+&lt;p&gt;Note that the least-sqaure method corresponds to the maximum likelihood estimation.
+Hence, one can justify the least-sqaure method, with the natural assumption of \(\epsilon\sim\mathcal{N}(\mu,\,\sigma^{2})\).&lt;/p&gt;
+
+&lt;p&gt;*It&amp;rsquo;s my first time using Katex, and it&amp;rsquo;s tough writing mathematical equations in markdown files. I chose a simple example as a practice. Here is the Github repo of Katex:
+&lt;a href=&#34;https://github.com/Khan/KaTeX&#34;&gt;https://github.com/Khan/KaTeX&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>first post</title>

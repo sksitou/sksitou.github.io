@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Machine learning notes : Least square error in linear regression // sksitouML</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta property="og:title" content="Machine learning notes : Least square error in linear regression" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="http://sksitou.me/post/Machine-learning-notes-:-least-square-in-linear-regression/" />
+
+
+    <link href="" rel="alternate" type="application/rss+xml" title="sksitouML" />
+    <link rel="shortcut icon" href="/favicon.png">
+
+    <link href="http://sksitou.me//css/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+    <link href="http://sksitou.me//css/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="http://sksitou.me//css/style.css">
+
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+
+    
+
+    <meta name="generator" content="Hugo 0.18.1" />
+</head>
+
+
+<body>
+<div id="container">
+    <header id="header">
+    <div id="header-outer" class="outer">
+        <div id="header-inner" class="inner">
+            <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+            <a id="logo" class="logo-text" href="http://sksitou.me/">sksitouML</a>
+            <nav id="main-nav">
+                
+            </nav>
+            <nav id="sub-nav">
+                <div id="search-form-wrap">
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+    <section id="main" class="outer">
+        <article class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        <header class="article-header">
+            <h1 class="article-title" itemprop="name">Machine learning notes : Least square error in linear regression</h1>
+        </header>
+        
+        <div class="article-meta">
+            <a href="/post/Machine-learning-notes-:-least-square-in-linear-regression/" class="article-date">
+                <time datetime='2017-02-19T22:00:00.000&#43;08:00' itemprop="datePublished">2017-02-19</time>
+            </a>
+            
+            
+            <div class="post-categories">
+                <div class="article-category">
+                    
+                    
+                    <a class="article-category-link" href="http://sksitou.me//categories/notes">notes</a>
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+        <div class="article-entry" itemprop="articleBody">
+            <p>Least sqaure error is used as a cost function in linear regression. However, why should one choose sqaure error, instead of absolute error, or other choices?
+There&rsquo;s a simple proof that can show that least sqaure error is a reasonable and natural choice.</p>
+
+<p>Assume the target variable and inputs are related as below:
+<div>\(y^i=\sigma^Tx^i+\epsilon^i\)</div>
+<div>\(\sum_{i=1}^m\)</div></p>
+
+<p>,where \(\epsilon\sim\mathcal{N}(\mu,\,\sigma^{2})\)</p>
+
+<p>i.e.
+<div>\(p(\epsilon^i)=\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(\epsilon^i)^2}{2\sigma^2})\)</div></p>
+
+<p>implies that
+<div>\(p(y^i|x^i_j\theta)=\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(y^i-\theta^Tx)^2}{2\sigma^2})\)</div></p>
+
+<p>We would like to minimize the error by maximising the log likelihood.
+The likelihood function is
+<div>\(L(\theta)=L(\theta:X,\vec{y})=p(y^i|x^i_j\theta)\)</div>
+<div>\(L(\theta)=\prod(y^i|x^i_j\theta)=\prod(\frac{1}{\sqrt{2\pi}}exp(-\frac{(\epsilon^i)^2}{2\sigma^2}))\)</div></p>
+
+<p>Minimizing the log likelihood function
+<div>\(l(\theta)\)</div>
+<div>\(=logL(\theta)\)</div>
+<div>\(=log(\prod(\frac{1}{\sqrt{2\pi}}exp(-\frac{(\epsilon^i)^2}{2\sigma^2})))\)</div>
+<div>\(=\prod_{i=1}^{m}(log(\frac{1}{\sqrt{2\pi}}exp(-\frac{(y^i-\theta^Tx)^2}{2\sigma^2})))\)</div>
+<div>\(=mlog(\frac{1}{\sqrt{2\pi}\sigma})-\frac{1}{\sigma^2}\frac{1}{2}(\sum(y^i-\theta^Tx^i)^2)\)</div></p>
+
+<p>which is equivalent to minimizing
+<div>\(\frac{1}{2}(\sum(y^i-\theta^Tx^i)^2)\)</div></p>
+
+<p>, which is also known as the least sqaure function, and note that the \(\sigma^2\) is irrelavent in this case.</p>
+
+<p>Note that the least-sqaure method corresponds to the maximum likelihood estimation.
+Hence, one can justify the least-sqaure method, with the natural assumption of \(\epsilon\sim\mathcal{N}(\mu,\,\sigma^{2})\).</p>
+
+<p>*It&rsquo;s my first time using Katex, and it&rsquo;s tough writing mathematical equations in markdown files. I chose a simple example as a practice. Here is the Github repo of Katex:
+<a href="https://github.com/Khan/KaTeX">https://github.com/Khan/KaTeX</a></p>
+
+        </div>
+
+        
+        
+        
+
+        
+        <footer class="article-footer">
+            <ul class="article-tag-list">
+                
+                <li class="article-tag-list-item">
+                    <a class="article-tag-list-link" href="http://sksitou.me//tags/machine-learning">machine learning
+                    </a>
+                </li>
+                
+                <li class="article-tag-list-item">
+                    <a class="article-tag-list-link" href="http://sksitou.me//tags/notes">notes
+                    </a>
+                </li>
+                
+            </ul>
+        </footer>
+        
+    </div>
+    <nav id="article-nav">
+    
+    
+    <a href="/post/first-post/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">first post&nbsp;<span>&gt;</span></div>
+    </a>
+    
+</nav>
+</article>
+        
+    </section>
+    <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 sksitouML&nbsp;
+            Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos">Minos</a>
+        </div>
+    </div>
+    
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha256-ExtbCSBuYA7kq1Pz362ibde9nnsHYPt6JxuxYeZbU+c=" crossorigin="anonymous"></script>
+        <script>renderMathInElement(document.body);</script>
+    
+</footer>
+</div>
+</body>
+</html>
