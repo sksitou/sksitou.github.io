@@ -6,8 +6,24 @@
     <description>Recent content on sksitouML</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 16 Feb 2017 01:56:30 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 19 Feb 2017 20:58:24 +0800</lastBuildDate>
     <atom:link href="http://sksitou.me/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>first post</title>
+      <link>http://sksitou.me/post/first-post/</link>
+      <pubDate>Sun, 19 Feb 2017 20:58:24 +0800</pubDate>
+      
+      <guid>http://sksitou.me/post/first-post/</guid>
+      <description>&lt;p&gt;Hello world! It&amp;rsquo;s my first time writing articles online. Thanks for the help of my friend &lt;a href=&#34;http://carsonip.me/&#34;&gt;Carson Ip&lt;/a&gt;, who ported the library from hexo to hugo. So that I can use the framework implemented in golang, with my favourite theme minos, which is implemented in another framework called hexo. If you like this theme but want to use hugo, you may want to check out the GitHub repo: &lt;a href=&#34;https://github.com/carsonip/hugo-theme-minos&#34;&gt;https://github.com/carsonip/hugo-theme-minos&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Also, thanks for my friend &lt;a href=&#34;sunnynlp.me&#34;&gt;Sunny&lt;/a&gt;, who encouraged me to start this blog.
+I&amp;rsquo;m going to share notes about machine learning, my pet projects and also interesting stuff here. I like learning machine learning algorithms and maths. The blog helps me to consolidate my learning. Writing them out forces me to capture them in a cohesive manner. Publishing them online makes me rethink if I have any unclear concepts.&lt;/p&gt;
+
+&lt;p&gt;The posts are written in the format of markdown files. I found it very convenient to use markdown files. Here is the cheatsheet I used as a beginner:
+&lt;a href=&#34;https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet&#34;&gt;https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>hello world</title>
