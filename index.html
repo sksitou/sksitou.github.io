@@ -82,7 +82,7 @@
                 </div>
                 <div class="article-entry" itemprop="articleBody">
                     Least sqaure error is used as a cost function in linear regression. However, why should one choose sqaure error, instead of absolute error, or other choices? There&rsquo;s a simple proof that can show that least sqaure error is a reasonable and natural choice.
-Assume the target variable and inputs are related as below: \(y^i=\sigma^Tx^i+\epsilon^i\) \(\sum_{i=1}^m\)
+Assume the target variable and inputs are related as below: \(y^i=\sigma^Tx^i+\epsilon^i\)
 ,where \(\epsilon\sim\mathcal{N}(\mu,\,\sigma^{2})\)
 i.e. \(p(\epsilon^i)=\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(\epsilon^i)^2}{2\sigma^2})\)
 implies that \(p(y^i|x^i_j\theta)=\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(y^i-\theta^Tx)^2}{2\sigma^2})\)

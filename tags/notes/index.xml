@@ -18,8 +18,7 @@
 There&amp;rsquo;s a simple proof that can show that least sqaure error is a reasonable and natural choice.&lt;/p&gt;
 
 &lt;p&gt;Assume the target variable and inputs are related as below:
-&lt;div&gt;\(y^i=\sigma^Tx^i+\epsilon^i\)&lt;/div&gt;
-&lt;div&gt;\(\sum_{i=1}^m\)&lt;/div&gt;&lt;/p&gt;
+&lt;div&gt;\(y^i=\sigma^Tx^i+\epsilon^i\)&lt;/div&gt;&lt;/p&gt;
 
 &lt;p&gt;,where \(\epsilon\sim\mathcal{N}(\mu,\,\sigma^{2})\)&lt;/p&gt;
 
