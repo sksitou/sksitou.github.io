@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Machine learning notes : Sigmoid function, softmax function, and exponential family // sksitouML</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta property="og:title" content="Machine learning notes : Sigmoid function, softmax function, and exponential family" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="http://sksitou.me/post/Machine-learning-notes-:-Sigmoid-function,-softmax-function,-and-exponential-family/" />
+
+
+    <link href="" rel="alternate" type="application/rss+xml" title="sksitouML" />
+    <link rel="shortcut icon" href="/favicon.png">
+
+    <link href="http://sksitou.me/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+    <link href="http://sksitou.me/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="http://sksitou.me/css/style.css">
+
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+
+    <meta name="generator" content="Hugo 0.18.1" />
+</head>
+
+
+<body>
+<div id="container">
+    <header id="header">
+    <div id="header-outer" class="outer">
+        <div id="header-inner" class="inner">
+            <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+            <a id="logo" class="logo-text" href="http://sksitou.me/">sksitouML</a>
+            <nav id="main-nav">
+                
+            </nav>
+            <nav id="sub-nav">
+                <div id="search-form-wrap">
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+    <section id="main" class="outer">
+        <article class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        <header class="article-header">
+            <h1 class="article-title" itemprop="name">Machine learning notes : Sigmoid function, softmax function, and exponential family</h1>
+        </header>
+        
+        <div class="article-meta">
+            <a href="/post/Machine-learning-notes-:-Sigmoid-function,-softmax-function,-and-exponential-family/" class="article-date">
+                <time datetime='2017-02-26T20:29:24.000&#43;08:00' itemprop="datePublished">2017-02-26</time>
+            </a>
+            
+            
+            <div class="post-categories">
+                <div class="article-category">
+                    
+                    
+                    <a class="article-category-link" href="http://sksitou.me//categories/notes">notes</a>
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+        <div class="article-entry" itemprop="articleBody">
+            
+
+<p>The sigmoid function and softmax function are commonly used in the field of machine learning. And they are like “least square error” in linear regression. They can be derived from certain basic assumptions using the general form of Exponential family. Some of the basic linear regression and classification algorithms can also be derived from the general form.</p>
+
+<h2 id="exponential-family">Exponential family</h2>
+
+<p>Exponential family includes the Gaussian, binomial, multinomial, Poisson, Gamma and many others distributions. Loosely speaking, a distribution belongs to exponential family if it can be transformed into the <strong>general form</strong>:
+<div>\(p(x|\eta)=h(x)exp(\eta^TT(x)-A(\eta))\)</div></p>
+
+<p>where
+<br>\(\eta\) is canonical parameter<br/>
+<br>\(T(x)\) is sufficient statistic<br/>
+<br>\(A(\eta)\) is cumulant function<br/>
+The regularity conditions of exponential family is mathematically rigorous. It can be referred here:
+<a href="http://stats.stackexchange.com/questions/187533/exponential-family-regularity-conditions">http://stats.stackexchange.com/questions/187533/exponential-family-regularity-conditions</a></p>
+
+<h2 id="nice-properties-of-the-general-form">Nice properties of the general form</h2>
+
+<p>The general form of exponential family contains nice properties for constructing machine learning models.</p>
+
+<ol>
+<li><p>Calculating moments
+<br>First derivative of the cumulant function is mean, while second derivative is the variance of the corresponding distribution. The <strong>cumulant generating function</strong> of exponential family distributions can be considered as \(A(\eta\)), which can be treated as an alternative way to calculate moments of a distribution. For moment generating function, we need to calculate the integral, however, for cumulant generating function, we just have to calculate the derivative, which is much more simple.
+<br/></p></li>
+
+<li><p>Obtaining sufficient statistics
+<br>The sufficient statistics, \(T(x)\), can be obtained by inspection.
+The intuitive explaination of sufficiency is:
+Having observed \(T(x)\), we can throw away \(X\) for the purposes of inference with respect to \(\theta\). <br/>
+For example, \(T(x)=x\) is sufficient statistics for bernoulli distribution and \(T(x)=[x,x^2]\) is the sufficient statistics of gaussian distribution</p></li>
+
+<li><p>Obtaining a general formula for maximum likelihood estimation
+<br>We can obtain a generalised formula for maximum likelihood estimates of the parameters in exponential family distributions. For example, for mean estimation, we have:<br/>
+\(u_ML=\frac{1}{N}\sum^N_nT(x_n)\)</p></li>
+</ol>
+
+<h2 id="transforming-distributions-into-general-form">Transforming distributions into general form</h2>
+
+<p>It is easy to transform a distribution into the general form. And we can gain insight from the general form.</p>
+
+<p>Consider Bernoulli distribution
+<div>\(p(x|\pi)
+=\pi^x(1-\pi)^{1-x}
+=exp(log(\frac{\pi}{1-\pi}x+log(1-\pi)))
+\)<div/></p>
+
+<p>where
+<br>\(\eta=\frac{\pi}{1-pi}\)<br/>
+<br>\(T(x)=x\)<br/>
+<br>\(A(\eta)=-log(1-\pi)=log(1+e^\eta)\)<br/>
+<br>\(h(x)=1\)<br/>
+Solving \(\pi\) in terms of \(\eta\), we have:
+<br>\(\pi=\frac{1}{1+e^{-\eta}}\)<br/>
+, which is the <strong>sigmoid function</strong>.</p>
+
+<p>Similarly, we can transform the multinomial distribution and obtain:
+<br>\(\pi_k=\frac{e^{\eta_k}}{\sum^K_je^{\eta_j}}\)<br/>
+,which is the <strong>softmax function</strong>.</p>
+
+<p>We can also derive regression models using the distributions in exponential family. For example:</p>
+
+<ol>
+<li>By having assumption that data follows gaussian noise, we can use gaussian distribution to model it, which give rise to <strong>least square error</strong></li>
+<li>For two-class classification problems, we can model it using bernoulli distribution, which give rise to <strong>binary classification using sigmoid function</strong></li>
+<li>For multi-class classification, we can model it using multinomial distribution, which give rise to <strong>multi-class classification using softmax function</strong>.</li>
+</ol>
+
+<p>Moreover, other models like <strong>poisson regression</strong> can also be derived from the general form of exponential family.
+The method of plugging in a desired distribution under assumptions is called generalised linear model.</p>
+
+        </div>
+
+        
+        
+        <div class="article-toc">
+            <h3>Contents</h3>
+            <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#exponential-family">Exponential family</a></li>
+<li><a href="#nice-properties-of-the-general-form">Nice properties of the general form</a></li>
+<li><a href="#transforming-distributions-into-general-form">Transforming distributions into general form</a></li>
+</ul></li>
+</ul>
+</nav>
+        </div>
+        
+        
+
+        
+        <footer class="article-footer">
+            <ul class="article-tag-list">
+                
+                <li class="article-tag-list-item">
+                    <a class="article-tag-list-link" href="http://sksitou.me//tags/notes">notes
+                    </a>
+                </li>
+                
+            </ul>
+        </footer>
+        
+    </div>
+    <nav id="article-nav">
+    
+    
+    <a href="/post/Machine-learning-notes-:-least-square-in-linear-regression/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">Machine learning notes : Least square error in linear regression&nbsp;<span>&gt;</span></div>
+    </a>
+    
+</nav>
+</article>
+        
+    </section>
+    <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 sksitouML&nbsp;
+            Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos">Minos</a>
+        </div>
+    </div>
+    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/tomorrow-night.min.css" integrity="sha256-2wL88NKUqvJi/ExflDzkzUumjUM73mcK2gBvBBeLvTk=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha256-ExtbCSBuYA7kq1Pz362ibde9nnsHYPt6JxuxYeZbU+c=" crossorigin="anonymous"></script>
+        <script>renderMathInElement(document.body);</script>
+    
+    <script>
+        document.getElementById('main-nav-toggle').addEventListener('click', function () {
+            var header = document.getElementById('header');
+            if (header.classList.contains('mobile-on')) {
+                header.classList.remove('mobile-on');
+            } else {
+                header.classList.add('mobile-on');
+            }
+        });
+    </script>
+</footer>
+</div>
+</body>
+</html>

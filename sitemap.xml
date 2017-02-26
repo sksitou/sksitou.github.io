@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://sksitou.me/post/Machine-learning-notes-:-Sigmoid-function,-softmax-function,-and-exponential-family/</loc>
+    <lastmod>2017-02-26T20:29:24+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://sksitou.me/post/Machine-learning-notes-:-least-square-in-linear-regression/</loc>
     <lastmod>2017-02-19T22:00:00+08:00</lastmod>
   </url>
@@ -24,19 +29,19 @@
   
   <url>
     <loc>http://sksitou.me/tags/notes/</loc>
-    <lastmod>2017-02-19T22:00:00+08:00</lastmod>
+    <lastmod>2017-02-26T20:29:24+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://sksitou.me/categories/notes/</loc>
-    <lastmod>2017-02-19T22:00:00+08:00</lastmod>
+    <lastmod>2017-02-26T20:29:24+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://sksitou.me/post/</loc>
-    <lastmod>2017-02-19T22:00:00+08:00</lastmod>
+    <lastmod>2017-02-26T20:29:24+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -47,7 +52,7 @@
   
   <url>
     <loc>http://sksitou.me/</loc>
-    <lastmod>2017-02-19T22:00:00+08:00</lastmod>
+    <lastmod>2017-02-26T20:29:24+08:00</lastmod>
     <priority>0</priority>
   </url>
   

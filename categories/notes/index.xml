@@ -9,6 +9,84 @@
     <atom:link href="http://sksitou.me/categories/notes/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Machine learning notes : Sigmoid function, softmax function, and exponential family</title>
+      <link>http://sksitou.me/post/Machine-learning-notes-:-Sigmoid-function,-softmax-function,-and-exponential-family/</link>
+      <pubDate>Sun, 26 Feb 2017 20:29:24 +0800</pubDate>
+      
+      <guid>http://sksitou.me/post/Machine-learning-notes-:-Sigmoid-function,-softmax-function,-and-exponential-family/</guid>
+      <description>
+
+&lt;p&gt;The sigmoid function and softmax function are commonly used in the field of machine learning. And they are like “least square error” in linear regression. They can be derived from certain basic assumptions using the general form of Exponential family. Some of the basic linear regression and classification algorithms can also be derived from the general form.&lt;/p&gt;
+
+&lt;h2 id=&#34;exponential-family&#34;&gt;Exponential family&lt;/h2&gt;
+
+&lt;p&gt;Exponential family includes the Gaussian, binomial, multinomial, Poisson, Gamma and many others distributions. Loosely speaking, a distribution belongs to exponential family if it can be transformed into the &lt;strong&gt;general form&lt;/strong&gt;:
+&lt;div&gt;\(p(x|\eta)=h(x)exp(\eta^TT(x)-A(\eta))\)&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;where
+&lt;br&gt;\(\eta\) is canonical parameter&lt;br/&gt;
+&lt;br&gt;\(T(x)\) is sufficient statistic&lt;br/&gt;
+&lt;br&gt;\(A(\eta)\) is cumulant function&lt;br/&gt;
+The regularity conditions of exponential family is mathematically rigorous. It can be referred here:
+&lt;a href=&#34;http://stats.stackexchange.com/questions/187533/exponential-family-regularity-conditions&#34;&gt;http://stats.stackexchange.com/questions/187533/exponential-family-regularity-conditions&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;nice-properties-of-the-general-form&#34;&gt;Nice properties of the general form&lt;/h2&gt;
+
+&lt;p&gt;The general form of exponential family contains nice properties for constructing machine learning models.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Calculating moments
+&lt;br&gt;First derivative of the cumulant function is mean, while second derivative is the variance of the corresponding distribution. The &lt;strong&gt;cumulant generating function&lt;/strong&gt; of exponential family distributions can be considered as \(A(\eta\)), which can be treated as an alternative way to calculate moments of a distribution. For moment generating function, we need to calculate the integral, however, for cumulant generating function, we just have to calculate the derivative, which is much more simple.
+&lt;br/&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Obtaining sufficient statistics
+&lt;br&gt;The sufficient statistics, \(T(x)\), can be obtained by inspection.
+The intuitive explaination of sufficiency is:
+Having observed \(T(x)\), we can throw away \(X\) for the purposes of inference with respect to \(\theta\). &lt;br/&gt;
+For example, \(T(x)=x\) is sufficient statistics for bernoulli distribution and \(T(x)=[x,x^2]\) is the sufficient statistics of gaussian distribution&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Obtaining a general formula for maximum likelihood estimation
+&lt;br&gt;We can obtain a generalised formula for maximum likelihood estimates of the parameters in exponential family distributions. For example, for mean estimation, we have:&lt;br/&gt;
+\(u_ML=\frac{1}{N}\sum^N_nT(x_n)\)&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;transforming-distributions-into-general-form&#34;&gt;Transforming distributions into general form&lt;/h2&gt;
+
+&lt;p&gt;It is easy to transform a distribution into the general form. And we can gain insight from the general form.&lt;/p&gt;
+
+&lt;p&gt;Consider Bernoulli distribution
+&lt;div&gt;\(p(x|\pi)
+=\pi^x(1-\pi)^{1-x}
+=exp(log(\frac{\pi}{1-\pi}x+log(1-\pi)))
+\)&lt;div/&gt;&lt;/p&gt;
+
+&lt;p&gt;where
+&lt;br&gt;\(\eta=\frac{\pi}{1-pi}\)&lt;br/&gt;
+&lt;br&gt;\(T(x)=x\)&lt;br/&gt;
+&lt;br&gt;\(A(\eta)=-log(1-\pi)=log(1+e^\eta)\)&lt;br/&gt;
+&lt;br&gt;\(h(x)=1\)&lt;br/&gt;
+Solving \(\pi\) in terms of \(\eta\), we have:
+&lt;br&gt;\(\pi=\frac{1}{1+e^{-\eta}}\)&lt;br/&gt;
+, which is the &lt;strong&gt;sigmoid function&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Similarly, we can transform the multinomial distribution and obtain:
+&lt;br&gt;\(\pi_k=\frac{e^{\eta_k}}{\sum^K_je^{\eta_j}}\)&lt;br/&gt;
+,which is the &lt;strong&gt;softmax function&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;We can also derive regression models using the distributions in exponential family. For example:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;By having assumption that data follows gaussian noise, we can use gaussian distribution to model it, which give rise to &lt;strong&gt;least square error&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;For two-class classification problems, we can model it using bernoulli distribution, which give rise to &lt;strong&gt;binary classification using sigmoid function&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;For multi-class classification, we can model it using multinomial distribution, which give rise to &lt;strong&gt;multi-class classification using softmax function&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Moreover, other models like &lt;strong&gt;poisson regression&lt;/strong&gt; can also be derived from the general form of exponential family.
+The method of plugging in a desired distribution under assumptions is called generalised linear model.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Machine learning notes : Least square error in linear regression</title>
       <link>http://sksitou.me/post/Machine-learning-notes-:-least-square-in-linear-regression/</link>
       <pubDate>Sun, 19 Feb 2017 22:00:00 +0800</pubDate>

@@ -104,3 +104,27 @@ every functions that take more than two arguments can be curried by returing nes
 
 mult :: Int -> (Int->(Int->Int))
 mult x y z = x*y*z
+
+{- 
+we can partially apply functions
+functions are building blocks of others
+-}
+
+take 5 :: [Int] -> [Int]
+-- take the first 5 elements
+drop 5 :: [Int] -> [Int]
+-- drop the last 5 elements
+
+--can compose a lot of functions
+
+Int -> Int -> Int -> Int
+--equals to
+Int -> (Int -> (Int -> Int))
+-- remove unneccsary parathesis
+
+mult x y z 
+--euqals to
+((mult x)y)z
+
+
+
