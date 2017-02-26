@@ -17,7 +17,9 @@
       <guid>http://sksitou.me/post/Machine-learning-notes-:-Sigmoid-function,-softmax-function,-and-exponential-family/</guid>
       <description>
 
-&lt;p&gt;The sigmoid function and softmax function are commonly used in the field of machine learning. And they are like “least square error” in linear regression. They can be derived from certain basic assumptions using the general form of Exponential family. Some of the basic linear regression and classification algorithms can also be derived from the general form.&lt;/p&gt;
+&lt;p&gt;The sigmoid function and softmax function are commonly used in the field of machine learning. And they are like “least square error” in linear regression. They can be derived from certain basic assumptions using the general form of Exponential family. Some of the basic linear regression and classification algorithms can also be derived from the general form. Let&amp;rsquo;s dig deep and see how we obtain the myterious functions.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://hackathonprojects.files.wordpress.com/2016/09/deeper-meme.jpg?w=656&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;exponential-family&#34;&gt;Exponential family&lt;/h2&gt;
 
@@ -84,6 +86,9 @@ Solving \(\pi\) in terms of \(\eta\), we have:
 
 &lt;p&gt;Moreover, other models like &lt;strong&gt;poisson regression&lt;/strong&gt; can also be derived from the general form of exponential family.
 The method of plugging in a desired distribution under assumptions is called generalised linear model.&lt;/p&gt;
+
+&lt;p&gt;Reference:
+&lt;a href=&#34;https://people.eecs.berkeley.edu/~jordan/courses/260-spring10/other-readings/chapter8.pdf&#34;&gt;https://people.eecs.berkeley.edu/~jordan/courses/260-spring10/other-readings/chapter8.pdf&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

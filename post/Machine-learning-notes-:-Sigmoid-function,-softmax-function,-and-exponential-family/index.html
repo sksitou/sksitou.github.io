@@ -79,7 +79,9 @@
         <div class="article-entry" itemprop="articleBody">
             
 
-<p>The sigmoid function and softmax function are commonly used in the field of machine learning. And they are like “least square error” in linear regression. They can be derived from certain basic assumptions using the general form of Exponential family. Some of the basic linear regression and classification algorithms can also be derived from the general form.</p>
+<p>The sigmoid function and softmax function are commonly used in the field of machine learning. And they are like “least square error” in linear regression. They can be derived from certain basic assumptions using the general form of Exponential family. Some of the basic linear regression and classification algorithms can also be derived from the general form. Let&rsquo;s dig deep and see how we obtain the myterious functions.</p>
+
+<p><img src="https://hackathonprojects.files.wordpress.com/2016/09/deeper-meme.jpg?w=656" alt="image" /></p>
 
 <h2 id="exponential-family">Exponential family</h2>
 
@@ -147,11 +149,14 @@ Solving \(\pi\) in terms of \(\eta\), we have:
 <p>Moreover, other models like <strong>poisson regression</strong> can also be derived from the general form of exponential family.
 The method of plugging in a desired distribution under assumptions is called generalised linear model.</p>
 
+<p>Reference:
+<a href="https://people.eecs.berkeley.edu/~jordan/courses/260-spring10/other-readings/chapter8.pdf">https://people.eecs.berkeley.edu/~jordan/courses/260-spring10/other-readings/chapter8.pdf</a></p>
+
         </div>
 
         
         
-        <div class="article-toc">
+        <div class="article-toc" style="display:none;">
             <h3>Contents</h3>
             <nav id="TableOfContents">
 <ul>
@@ -166,6 +171,47 @@ The method of plugging in a desired distribution under assumptions is called gen
         </div>
         
         
+
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.slim.min.js" integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc=" crossorigin="anonymous"></script>
+        <script>
+            (function() {
+                var $toc = $('#TableOfContents');
+                if ($toc.length > 0) {
+                    var $window = $(window);
+
+                    $window.on('scroll', onScroll);
+                    $(document).ready(function() {
+                        $toc.find('a').parent('li').siblings('ul').hide();
+                        onScroll();
+                        document.getElementsByClassName('article-toc')[0].style.display = '';
+                    });
+
+                    function onScroll(){
+                        var currentScroll = $window.scrollTop();
+                        var h = $('.article-entry h1, .article-entry h2, .article-entry h3, .article-entry h4, .article-entry h5, .article-entry h6');
+                        var id = "";
+                        h.each(function (i, e) {
+                            e = $(e);
+                            if (e.offset().top - 10 <= currentScroll) {
+                                id = e.attr('id');
+                            }
+                        });
+                        var active = $toc.find('a.active');
+                        if (active.length == 1 && active.eq(0).attr('href') == '#' + id) return true;
+
+                        active.each(function (i, e) {
+                            $(e).removeClass('active').siblings('ul').hide();
+                        });
+                        $toc.find('a[href="#' + id + '"]').parentsUntil('#TableOfContents').each(function (i, e) {
+                            $(e).children('a').addClass('active').siblings('ul').show();
+                        });
+                    }
+                }
+            })();
+        </script>
+        
+
 
         
         <footer class="article-footer">
@@ -199,6 +245,13 @@ The method of plugging in a desired distribution under assumptions is called gen
         </div>
     </div>
     
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-92683303-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/tomorrow-night.min.css" integrity="sha256-2wL88NKUqvJi/ExflDzkzUumjUM73mcK2gBvBBeLvTk=" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
