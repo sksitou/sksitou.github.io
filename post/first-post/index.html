@@ -90,13 +90,6 @@ I&rsquo;m going to share notes about machine learning, my pet projects and also 
                 if ($toc.length > 0) {
                     var $window = $(window);
 
-                    $window.on('scroll', onScroll);
-                    $(document).ready(function() {
-                        $toc.find('a').parent('li').siblings('ul').hide();
-                        onScroll();
-                        document.getElementsByClassName('article-toc')[0].style.display = '';
-                    });
-
                     function onScroll(){
                         var currentScroll = $window.scrollTop();
                         var h = $('.article-entry h1, .article-entry h2, .article-entry h3, .article-entry h4, .article-entry h5, .article-entry h6');
@@ -117,6 +110,13 @@ I&rsquo;m going to share notes about machine learning, my pet projects and also 
                             $(e).children('a').addClass('active').siblings('ul').show();
                         });
                     }
+
+                    $window.on('scroll', onScroll);
+                    $(document).ready(function() {
+                        $toc.find('a').parent('li').find('ul').hide();
+                        onScroll();
+                        document.getElementsByClassName('article-toc')[0].style.display = '';
+                    });
                 }
             })();
         </script>
@@ -140,6 +140,7 @@ I&rsquo;m going to share notes about machine learning, my pet projects and also 
     
 </nav>
 </article>
+
         
     </section>
     <footer id="footer">

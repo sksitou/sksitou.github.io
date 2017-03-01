@@ -18,7 +18,7 @@
 
 &lt;p&gt;The sigmoid function and softmax function are commonly used in the field of machine learning. And they are like “least square error” in linear regression. They can be derived from certain basic assumptions using the general form of Exponential family. Some of the basic linear regression and classification algorithms can also be derived from the general form. Let&amp;rsquo;s dig deep and see how we obtain the myterious functions.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://hackathonprojects.files.wordpress.com/2016/09/deeper-meme.jpg?w=656&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://i0.kym-cdn.com/photos/images/facebook/000/531/557/a88.jpg&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;exponential-family&#34;&gt;Exponential family&lt;/h2&gt;
 
@@ -74,6 +74,8 @@ Solving \(\pi\) in terms of \(\eta\), we have:
 &lt;p&gt;Similarly, we can transform the multinomial distribution and obtain:
 &lt;br&gt;\(\pi_k=\frac{e^{\eta_k}}{\sum^K_je^{\eta_j}}\)&lt;br/&gt;
 ,which is the &lt;strong&gt;softmax function&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://ci.memecdn.com/10372873.jpg&#34; alt=&#34;image&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;We can also derive regression models using the distributions in exponential family. For example:&lt;/p&gt;
 

@@ -81,7 +81,7 @@
 
 <p>The sigmoid function and softmax function are commonly used in the field of machine learning. And they are like “least square error” in linear regression. They can be derived from certain basic assumptions using the general form of Exponential family. Some of the basic linear regression and classification algorithms can also be derived from the general form. Let&rsquo;s dig deep and see how we obtain the myterious functions.</p>
 
-<p><img src="https://hackathonprojects.files.wordpress.com/2016/09/deeper-meme.jpg?w=656" alt="image" /></p>
+<p><img src="http://i0.kym-cdn.com/photos/images/facebook/000/531/557/a88.jpg" alt="image" /></p>
 
 <h2 id="exponential-family">Exponential family</h2>
 
@@ -138,6 +138,8 @@ Solving \(\pi\) in terms of \(\eta\), we have:
 <br>\(\pi_k=\frac{e^{\eta_k}}{\sum^K_je^{\eta_j}}\)<br/>
 ,which is the <strong>softmax function</strong>.</p>
 
+<p><img src="http://ci.memecdn.com/10372873.jpg" alt="image" /></p>
+
 <p>We can also derive regression models using the distributions in exponential family. For example:</p>
 
 <ol>
@@ -180,13 +182,6 @@ The method of plugging in a desired distribution under assumptions is called gen
                 if ($toc.length > 0) {
                     var $window = $(window);
 
-                    $window.on('scroll', onScroll);
-                    $(document).ready(function() {
-                        $toc.find('a').parent('li').siblings('ul').hide();
-                        onScroll();
-                        document.getElementsByClassName('article-toc')[0].style.display = '';
-                    });
-
                     function onScroll(){
                         var currentScroll = $window.scrollTop();
                         var h = $('.article-entry h1, .article-entry h2, .article-entry h3, .article-entry h4, .article-entry h5, .article-entry h6');
@@ -207,6 +202,13 @@ The method of plugging in a desired distribution under assumptions is called gen
                             $(e).children('a').addClass('active').siblings('ul').show();
                         });
                     }
+
+                    $window.on('scroll', onScroll);
+                    $(document).ready(function() {
+                        $toc.find('a').parent('li').find('ul').hide();
+                        onScroll();
+                        document.getElementsByClassName('article-toc')[0].style.display = '';
+                    });
                 }
             })();
         </script>
@@ -235,6 +237,7 @@ The method of plugging in a desired distribution under assumptions is called gen
     
 </nav>
 </article>
+
         
     </section>
     <footer id="footer">
